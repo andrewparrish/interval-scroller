@@ -1,0 +1,15 @@
+#container {
+    position: relative;
+}
+
+#container canvas, #scroller {
+    position: absolute;
+}
+
+#scroller {
+    border-style: solid;
+}
+
+canvas {
+    border-style: solid; 
+}
