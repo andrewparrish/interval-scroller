@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { LibService } from 'interval-scroller';
 
 @Component({
   selector: 'demo-app',
@@ -7,7 +6,8 @@ import { LibService } from 'interval-scroller';
 })
 export class AppComponent {
   meaning: number;
-  constructor(libService: LibService) {
-    this.meaning = libService.getMeaning();
+  constructor() {
+    this.meaning = 1;
+    // this.meaning = libService.getMeaning();
   }
 }

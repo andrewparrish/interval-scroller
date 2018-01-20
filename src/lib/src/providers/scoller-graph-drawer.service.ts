@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ScrollerOptionsInterface } from 'src/scroller-options.interface';
+import { ScrollerOptionsInterface } from '../interfaces/scroller-options.interface';
 
 @Injectable()
 export class ScrollerGraphDrawerService {

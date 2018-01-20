@@ -1,11 +1,11 @@
 import { Component, ViewChild, OnInit, ElementRef, Input } from '@angular/core';
-import { Draggable } from '@shopify/draggable';
+import { Draggable, DragEventName, DragEvent } from '@shopify/draggable';
 
-import { ScrollerOptionsInterface } from 'src/scroller-options.interface';
-import { ScrollerGraphDrawerService } from 'src/providers/scoller-graph-drawer.service';
+import { ScrollerOptionsInterface } from '../interfaces/scroller-options.interface';
+import { ScrollerGraphDrawerService } from '../providers/scoller-graph-drawer.service';
 
 @Component({
-  selector: 'app-widget-scroller',
+  selector: 'interval-scroller',
   templateUrl: './scroller.component.html',
   styleUrls: ['./scroller.component.css']
 })
@@ -34,7 +34,7 @@ export class ScrollerComponent implements OnInit {
       draggable: 'div'
     });
 
-    this.scrollerDraggable.on('drag:start', (draggable: Draggable) => {
+    this.scrollerDraggable.on(DragEventName.Start, (draggable: DragEvent) => {
       console.log(draggable);
     })
   }
