@@ -1,5 +1,5 @@
 import { Component, ViewChild, OnInit, ElementRef, Input } from '@angular/core';
-import { Draggable, DragEventName, DragEvent } from '@shopify/draggable';
+import { Draggable, DragEvent } from '@shopify/draggable';
 
 import { ScrollerOptionsInterface } from '../interfaces/scroller-options.interface';
 import { ScrollerGraphDrawerService } from '../providers/scoller-graph-drawer.service';
@@ -18,8 +18,11 @@ export class ScrollerComponent implements OnInit {
   private ctx: CanvasRenderingContext2D;
   private scrollerDraggable: Draggable;
   private scrollerOptions: ScrollerOptionsInterface;
+  private scrollerLeftPosition: number;
 
-  constructor(private scrollDrawer: ScrollerGraphDrawerService) { }
+  constructor(private scrollDrawer: ScrollerGraphDrawerService) {
+    this.scrollerLeftPosition = 0;
+  }
 
   ngOnInit(): void {
     let ctx: CanvasRenderingContext2D =
@@ -34,9 +37,18 @@ export class ScrollerComponent implements OnInit {
       draggable: 'div'
     });
 
-    this.scrollerDraggable.on(DragEventName.Start, (draggable: DragEvent) => {
-      console.log(draggable);
-    })
+    this.scrollerDraggable.on('move:start', (draggable: DragEvent) => {
+    });
+
+    this.scrollerDraggable.on('drag:move', this.setScrollerPosition);
+  }
+
+  setScrollerPosition = (draggable: DragEvent): void => {
+    this.scrollerLeftPosition += draggable.sensorEvent.data.originalEvent.movementX;
+  };
+
+  get scrollerPositionLeftPx(): string {
+    return this.scrollerLeftPosition + 'px';
   }
 
   get graphHeightPx(): string {

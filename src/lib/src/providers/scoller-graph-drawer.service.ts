@@ -21,13 +21,13 @@ export class ScrollerGraphDrawerService {
     this.drawTimeTicks(ctx, graphWidth, 20);
   }
 
-  private drawTimeTicks(ctx: CanvasRenderingContext2D, graphWidth: number, interval: number): void {
+  drawTimeTicks(ctx: CanvasRenderingContext2D, graphWidth: number, interval: number): void {
     for(let i = interval; i < graphWidth; i+=interval) {
       this.drawTimeTick(ctx, i, 0, 20);
     }
   }
 
-  private drawTimeTick(ctx: CanvasRenderingContext2D, x: number, y: number, length: number): void {
+  drawTimeTick(ctx: CanvasRenderingContext2D, x: number, y: number, length: number): void {
     ctx.moveTo(x, y);
     let yTo = (y > 0) ? y - length : y + length;
     ctx.lineTo(x, yTo);
